@@ -24,6 +24,7 @@ VALUES
     (13, 'Slow Cooker', 'Appliances', 49.95, 30, 4.7),
     (14, 'Cutlery Set', 'Kitchen Supplies', 34.50, 40, 4.4),
     (15, 'Cozy Throw Blanket', 'Furnishings', 24.99, 100, 4.2);
+    
 
 #For this project, I used SQL to query the Superstore database for information on items and prices.
 
@@ -36,13 +37,13 @@ ORDER BY price;
 SELECT MAX(price)
 FROM superstore;
 
-#Show price for items in the category of "Kitchen Supplies".
-SELECT price, item_name
+#Show the sum price for items in the category of "Kitchen Supplies".
+SELECT SUM (price), category 
 FROM superstore
-WHERE category="KITCHEN SUPPLIES"
-ORDER BY price;
+WHERE category="Kitchen Supplies";
 
-#Show amount of stock for items in category of "Wireless Earbuds".
-SELECT stock_quantity
+#Show items with an above 4.5 rating.
+SELECT average_rating, item_name
 FROM superstore
-WHERE item_name="Wireless Earbuds";
+WHERE average_rating > 4.5
+ORDER BY average_rating;
