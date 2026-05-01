@@ -67,7 +67,8 @@ AND paid_time_off_days>20
 
 -- 2. [calculation and alias]
 SELECT company_name, (paid_time_off_days + maternity_leave_weeks) AS time_away
-FROM fortune_companies ;
+FROM fortune_companies 
+;
 
 -- 3. [CASE]
 SELECT company_name, paid_time_off_days,
@@ -76,7 +77,23 @@ CASE
     WHEN paid_time_off_days BETWEEN 15 AND 20 THEN 'AVERAGE'
     ELSE 'GOOD'
   END AS Time_off  
-FROM fortune_companies;
+FROM fortune_companies
+;
 
 -- 4. [HAVING]
+SELECT company_name, industry, revenue
+FROM fortune_companies
+GROUP BY company_name
+HAVING revenue > 200
+ORDER BY revenue DESC
+;
+
 -- 5. [up to me!]
+SELECT company_name, employees,
+   CASE 
+        WHEN healthcare_benefits = 1 THEN 'Yes' 
+        ELSE 'No' 
+    END AS healthcare_benefits_provided 
+FROM fortune_companies
+;
+
